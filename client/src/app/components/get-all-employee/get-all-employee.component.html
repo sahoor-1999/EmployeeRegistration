@@ -1,0 +1,25 @@
+<button class="btn-new" routerLink="/employee">Post New Employee</button>
+<table>
+    <thead>
+        <tr>
+            <th>Emp. Number</th>
+            <th>Emp. Name</th>
+            <th>Emp. Mobile</th>
+            <th>Emp. Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees">
+            <td>{{employee.empNo}}</td>
+            <td>{{employee.empName}}</td>
+            <td>{{employee.mobile}}</td>
+            <td>{{employee.email}}</td>
+            <td>
+                <button class="btn-update" routerLink="/employee/{{employee.id}}">Update</button>
+                <button class="btn-delete" (click)="deleteEmployee(employee.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+

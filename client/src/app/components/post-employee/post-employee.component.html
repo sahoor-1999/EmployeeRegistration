@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="form-container">
+      <h2 class="form-title">Employee Registration</h2>
+      <form [formGroup]="postEmployeeForm" (ngSubmit)="postEmployee()">
+        <div class="form-group">
+          <label for="empNo">Employee Number:</label>
+          <input formControlName="empNo" [ngClass]="{'is-invalid':submitted && postEmployeeForm.controls['empNo'].errors}" type="text" id="empNo" name="empNo"/>
+          <div *ngIf="submitted && postEmployeeForm.controls['empNo'].errors" class="invalid-feedback">
+            <div *ngIf="postEmployeeForm.controls['empNo'].errors['required']">Employee Number is required.</div>
+            <div *ngIf="postEmployeeForm.controls['empNo'].errors['minlength']">Employee Number must be at least 5 characters.</div>
+            <div *ngIf="postEmployeeForm.controls['empNo'].errors['maxlength']">Employee Number cannot be more than 10 characters.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="empName">Employee Name:</label>
+          <input type="text" id="empName" name="empName" formControlName="empName" [ngClass]="{'is-invalid':submitted && postEmployeeForm.controls['empName'].errors}"/>
+          <div *ngIf="submitted && postEmployeeForm.controls['empName'].errors" class="invalid-feedback">
+            <div *ngIf="postEmployeeForm.controls['empName'].errors['required']">Employee name is required.</div>
+            <div *ngIf="postEmployeeForm.controls['empName'].errors['minlength']">Employee name must be at least 5 characters.</div>
+            <div *ngIf="postEmployeeForm.controls['empName'].errors['maxlength']">Employee name cannot be more than 50 characters.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="mobile">Mobile:</label>
+          <input type="tel" id="mobile" name="mobile" formControlName="mobile" [ngClass]="{'is-invalid':submitted && postEmployeeForm.controls['mobile'].errors}"/>
+          <div *ngIf="submitted && postEmployeeForm.controls['mobile'].errors" class="invalid-feedback">
+            <div *ngIf="postEmployeeForm.controls['mobile'].errors['required']">Mobile is required.</div>
+            <div *ngIf="postEmployeeForm.controls['mobile'].errors['minlength']">Mobile must be exactly 10 characters.</div>
+            <div *ngIf="postEmployeeForm.controls['mobile'].errors['maxlength']">Mobile must be exactly 10 characters.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">E-Mail:</label>
+          <input type="email" id="email" name="email" formControlName="email" [ngClass]="{'is-invalid':submitted && postEmployeeForm.controls['email'].errors}"/>
+          <div *ngIf="submitted && postEmployeeForm.controls['email'].errors" class="invalid-feedback">
+            <div *ngIf="postEmployeeForm.controls['email'].errors['required']">Email is required.</div>
+            <div *ngIf="postEmployeeForm.controls['email'].errors['minlength']">Invalid email format.</div>
+            <div *ngIf="postEmployeeForm.controls['email'].errors['maxlength']">Email cannot be more than 100 characters.</div>
+          </div>
+        </div>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+  

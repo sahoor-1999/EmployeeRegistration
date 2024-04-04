@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="form-container">
+      <h2 class="form-title">User Registration Form</h2>
+      <form [formGroup]="userForm" (ngSubmit)="postUser()">
+        <div class="form-group">
+          <label for="name">User full name:</label>
+          <input formControlName="name" [ngClass]="{'is-invalid':submitted && userForm.controls['name'].errors}" type="text" id="name" name="name"/>
+          <div *ngIf="submitted && userForm.controls['name'].errors" class="invalid-feedback">
+            <div *ngIf="userForm.controls['name'].errors['required']">User Full name is required.</div>
+            <div *ngIf="userForm.controls['name'].errors['minlength']">User Full name must be at least 5 characters.</div>
+            <div *ngIf="userForm.controls['name'].errors['maxlength']">Employee Number cannot be more than 50 characters.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" formControlName="username" [ngClass]="{'is-invalid':submitted && userForm.controls['username'].errors}"/>
+          <div *ngIf="submitted && userForm.controls['username'].errors" class="invalid-feedback">
+            <div *ngIf="userForm.controls['username'].errors['required']">Username is required.</div>
+            <div *ngIf="userForm.controls['username'].errors['minlength']">Username must be at least 5 characters.</div>
+            <div *ngIf="userForm.controls['username'].errors['maxlength']">Username cannot be more than 25 characters.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">E-Mail:</label>
+          <input type="email" id="email" name="email" formControlName="email" [ngClass]="{'is-invalid':submitted && userForm.controls['email'].errors}"/>
+          <div *ngIf="submitted && userForm.controls['email'].errors" class="invalid-feedback">
+            <div *ngIf="userForm.controls['email'].errors['required']">Email is required.</div>
+            <div *ngIf="userForm.controls['email'].errors['minlength']">Invalid email format.</div>
+            <div *ngIf="userForm.controls['email'].errors['maxlength']">Email cannot be more than 100 characters.</div>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" formControlName="password" [ngClass]="{'is-invalid':submitted && userForm.controls['password'].errors}"/>
+            <div *ngIf="submitted && userForm.controls['password'].errors" class="invalid-feedback">
+              <div *ngIf="userForm.controls['password'].errors['required']">Password is required.</div>
+              <div *ngIf="userForm.controls['password'].errors['minlength']">Password must be exactly 5 characters.</div>
+              <div *ngIf="userForm.controls['password'].errors['maxlength']">Password must be exactly 10 characters.</div>
+            </div>
+          </div>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+  
