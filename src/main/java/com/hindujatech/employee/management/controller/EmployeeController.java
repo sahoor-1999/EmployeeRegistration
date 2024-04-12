@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/employee_management")
+@CrossOrigin(origins = "http://localhost:4200")
 public class EmployeeController {
 
     private EmployeeService employeeService;
@@ -21,9 +22,9 @@ public class EmployeeController {
     }
     //http://localhost:8080/api/employee_management/save
     @PostMapping("/save")
-    public Employee saveRecord(@Valid @RequestBody Employee employee){
-        Employee employee1 = employeeService.saveEmployee(employee);
-        return employee1;
+    public void saveRecord(@Valid @RequestBody Employee employee){
+        String message = employee.getEmpName() + " - Thanks for register with us our executive will get back you soon.";
+        employeeService.saveEmployee(employee, message);
     }
     //http://localhost:8080/api/employee_management/delete/1
     @DeleteMapping("/delete/{id}")
